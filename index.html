@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebKit5 - PS5 Host Environment</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <span class="logo-icon">⚡</span>
+                <h1>WebKit5</h1>
+            </div>
+            <p class="subtitle">Framework Environment | v13.60 Compatibility</p>
+        </header>
+
+        <!-- Panel de Estado Central -->
+        <div class="status-box">
+            <span class="status-label">System Status:</span>
+            <span id="status" class="status-value idle">Ready - Awaiting User Interaction</span>
+        </div>
+
+        <!-- Rejilla de Módulos (Payloads) -->
+        <div class="payload-grid">
+            
+            <!-- Stage 1: Activación Base -->
+            <div class="card card-highlight">
+                <div class="card-header">
+                    <h3>Stage 1</h3>
+                    <span class="badge badge-required">Required</span>
+                </div>
+                <p>Trigger WebKit vulnerability to corrupt ArrayBuffer and gain R/W memory primitives.</p>
+                <button id="btn-jailbreak" class="btn btn-primary" onclick="triggerJailbreak()">Trigger Jailbreak</button>
+            </div>
+
+            <!-- Módulo 2: Parcheo en RAM -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Firmware Spoof</h3>
+                    <span class="badge">Memory</span>
+                </div>
+                <p>Scan kernel memory addresses and write alternative version strings into RAM.</p>
+                <button id="btn-spoof" class="btn btn-secondary" onclick="triggerSpoof()" disabled>Enable Spoof</button>
+            </div>
+
+            <!-- Módulo 3: Syscalls de Almacenamiento -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>App2USB</h3>
+                    <span class="badge">ROP Chain</span>
+                </div>
+                <p>Construct a stack-pivot ROP chain to trigger the mount system call for USB drives.</p>
+                <button id="btn-app2usb" class="btn btn-secondary" onclick="triggerApp2USB()" disabled>Launch App2USB</button>
+            </div>
+
+            <!-- Módulo 4: Servidor de Payloads por Red -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>BinLoader</h3>
+                    <span class="badge">Network</span>
+                </div>
+                <p>Launch a local listener daemon on port 9021 to accept external payload injections.</p>
+                <button id="btn-binloader" class="btn btn-secondary" onclick="triggerBinLoader()" disabled>Launch BinLoader</button>
+            </div>
+            
+        </div>
+
+        <footer>
+            <p><strong>WebKit5 Project v1.0.0</strong> — Developed for educational purposes and security research.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts de carga modular en orden estricto de dependencias -->
+    <script src="js/offsets.js"></script>
+    <script src="js/jailbreak.js"></script>
+    <script src="js/spoof.js"></script>
+    <script src="js/app2usb.js"></script>
+    <script src="js/binloader.js"></script>
+</body>
+</html>
